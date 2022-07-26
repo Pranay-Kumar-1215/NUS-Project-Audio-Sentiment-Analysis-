@@ -48,19 +48,13 @@ choose_model = st.sidebar.selectbox(
 )
 
 # Model choice logic
-if choose_model == "Model 1 (10 food classes)":
-    CLASSES = classes_and_models["model_1"]["classes"]
-    MODEL = classes_and_models["model_1"]["model_name"]
-elif choose_model == "Model 2 (11 food classes)":
-    CLASSES = classes_and_models["model_2"]["classes"]
-    MODEL = classes_and_models["model_2"]["model_name"]
-else:
-    CLASSES = classes_and_models["model_3"]["classes"]
-    MODEL = classes_and_models["model_3"]["model_name"]
+choose_model == "Model 1 (10 food classes)":
+CLASSES = classes_and_models["model_1"]["classes"]
+MODEL = classes_and_models["model_1"]["model_name"]
 
 # Display info about model and classes
-if st.checkbox("Show classes"):
-    st.write(f"You chose {MODEL}, these are the classes of food it can identify:\n", CLASSES)
+st.checkbox("Show classes"):
+st.write(f"You chose {MODEL}, these are the classes of food it can identify:\n", CLASSES)
 
 # File uploader allows user to add their own image
 uploaded_file = st.file_uploader(label="Upload an image of food",
