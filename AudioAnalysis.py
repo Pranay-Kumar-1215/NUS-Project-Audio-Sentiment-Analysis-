@@ -5,7 +5,6 @@
 
 
 from glob import glob
-import matplotlib.pyplot as plt
 from pyAudioAnalysis import ShortTermFeatures as sf
 import librosa
 import librosa.display
@@ -73,11 +72,6 @@ len(paths)
 #angry
 y_angry = librosa.load(angry[0])
 y_angry_time = librosa.frames_to_time(y_angry[0])
-plt.plot(y_angry_time)
-plt.xlabel('time -->')
-plt.ylabel('Amplitude -->')
-plt.title('Waveform for angry audio')
-plt.show()
 
 
 # In[909]:
@@ -89,45 +83,12 @@ spec_angry = librosa.amplitude_to_db(spec_angry)
 librosa.display.specshow(spec_angry, sr=sr, x_axis='time', y_axis='mel')
 
 
-plt.title('mel power spectrogram')
-
-
-plt.colorbar(format='%+02.0f dB')
-
-plt.tight_layout()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
 # In[910]:
 
 
 spec_angry = librosa.feature.chroma_stft(y_angry_time)
 spec_angry = librosa.amplitude_to_db(spec_angry)
 librosa.display.specshow(spec_angry, y_axis='chroma', x_axis='time')
-plt.title('Chromogram')
-
-
-plt.colorbar(format='%+02.0f dB')
-
-plt.tight_layout()
-
-
-# In[ ]:
-
-
-
-
 
 # In[911]:
 
@@ -135,11 +96,6 @@ plt.tight_layout()
 #neutral
 y_neutral,sr = librosa.load(neutral[10])
 y_neutral_time = librosa.frames_to_time(y_neutral)
-plt.plot(y_neutral_time)
-plt.xlabel('time -->')
-plt.ylabel('Amplitude -->')
-plt.title('Waveform for neutral audio')
-plt.show()
 
 
 # In[912]:
@@ -148,15 +104,6 @@ plt.show()
 spec_neutral = librosa.feature.mfcc(y_neutral_time)
 spec_neutral = librosa.amplitude_to_db(spec_neutral)
 librosa.display.specshow(spec_neutral, sr=sr, x_axis='time', y_axis='mel')
-
-
-plt.title('mel power spectrogram')
-
-
-plt.colorbar(format='%+02.0f dB')
-
-plt.tight_layout()
-
 
 # In[ ]:
 
@@ -170,12 +117,7 @@ plt.tight_layout()
 spec_neutral = librosa.feature.chroma_stft(y_neutral)
 spec_neutral = librosa.amplitude_to_db(spec_neutral)
 librosa.display.specshow(spec_neutral, y_axis='chroma', x_axis='time')
-plt.title('Chromogram')
 
-
-plt.colorbar(format='%+02.0f dB')
-
-plt.tight_layout()
 
 
 # In[914]:
@@ -184,11 +126,6 @@ plt.tight_layout()
 #sad
 y_sad,sr = librosa.load(sad[0])
 y_sad_time = librosa.frames_to_time(y_sad)
-plt.plot(y_sad_time)
-plt.xlabel('time -->')
-plt.ylabel('Amplitude -->')
-plt.title('Waveform for sad audio')
-plt.show()
 
 
 # In[915]:
@@ -198,25 +135,12 @@ spec_sad = librosa.feature.mfcc(y_sad_time)
 spec_sad = librosa.amplitude_to_db(spec_sad)
 librosa.display.specshow(spec_sad, sr=sr, x_axis='time', y_axis='mel')
 
-plt.title('mel power spectrogram')
-
-plt.colorbar(format='%+02.0f dB')
-
-plt.tight_layout()
-
-
 # In[916]:
 
 
 spec_sad = librosa.feature.chroma_stft(y_sad_time)
 spec_sad = librosa.amplitude_to_db(spec_sad)
 librosa.display.specshow(spec_sad, y_axis='chroma', x_axis='time')
-plt.title('Chromogram')
-
-
-plt.colorbar(format='%+02.0f dB')
-
-plt.tight_layout()
 
 
 # In[ ]:
@@ -294,13 +218,6 @@ values = list(data.values())
 
 
 # In[1029]:
-
-
-plt.bar(courses, values, color ='blue', width = 0.4)
-plt.ylabel('No. of audio files for each sentiment')
-plt.xlabel('Sentiments')
-plt.grid()
-plt.show()
 
 
 # In[ ]:
@@ -519,15 +436,6 @@ from tensorflow.keras.models import Sequential
 # In[802]:
 
 
-plt.plot(history.history['loss'])
-plt.xlabel('epochs')
-plt.ylabel('Loss')
-plt.title('Training Loss')
-plt.show()
-
-
-# In[951]:
-
 
 X_train_arr.shape[1]
 
@@ -577,7 +485,6 @@ disp = ConfusionMatrixDisplay(confusion_matrix=cm,
                               display_labels=['positive','neutral','negative'])
 
 disp.plot()
-plt.show()
 
 
 # In[ ]:
